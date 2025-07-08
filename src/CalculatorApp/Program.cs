@@ -1,8 +1,10 @@
 using System;
 
-namespace HelloWorld
+using MathLib;
+
+namespace CalculatorApp
 {
-    class MathematicalOperations
+    class Program
     {
         static void Main(string[] args)
         {
@@ -20,12 +22,13 @@ namespace HelloWorld
                 return;
             }
 
-            Console.WriteLine($"{num1} + {num2} = {num1 + num2}");
-            Console.WriteLine($"{num1} - {num2} = {num1 - num2}");
-            Console.WriteLine($"{num1} * {num2} = {num1 * num2}");
-            if (num2 != 0)
+            Console.WriteLine($"{num1} + {num2} = {MathOperations.Add(num1, num2)}");
+            Console.WriteLine($"{num1} - {num2} = {MathOperations.Subtract(num1, num2)}");
+            Console.WriteLine($"{num1} * {num2} = {MathOperations.Multiply(num1, num2)}");
+            double? result = MathOperations.Divide(num1, num2);
+            if (result.HasValue)
             {
-                Console.WriteLine($"{num1} / {num2} = {num1 / num2}");
+                Console.WriteLine($"{num1} / {num2} = {result.Value}");
             }
             else
             {
